@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  lint:
+  build:
     docker:
       - image: wata727/tflint:0.9.2
     steps:
@@ -13,5 +13,9 @@ jobs:
       - image: hashicorp/terraform:0.12.5
     steps:
       - checkout
-      - run: terraform init
-      - run: terraform validate
+      - run:
+          name: init
+          command: terraform init
+      - run:
+          name: validate
+          command: terraform validate
