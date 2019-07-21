@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/nlarzon/terraform-azure-vnet.svg?style=svg)](https://circleci.com/gh/nlarzon/terraform-azure-vnet)
+
 # terraform-azure-vnet
 
 Terraform Module to create Azure VNET and subnets using terraform 0.12
