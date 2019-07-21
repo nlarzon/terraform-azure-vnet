@@ -16,6 +16,13 @@ variable "resource_group_location" {
   default     = "North Europe"
 }
 
+variable "resource_group_tags" {
+  description = "Additional tags for resource group"
+  type        = map
+  default     = {}
+}
+
+
 
 variable "vnet_cidr" {
   description = "The CIDR block for VNET"
@@ -36,71 +43,9 @@ variable "vnet_dns_servers" {
   default     = []
 }
 
-
-variable "ddos_protection_plan_id" {
-  description = "The Resource ID of DDoS Protection Plan"
-  type        = string
-  default     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/ddosProtectionPlans/testddospplan"
-}
-
-variable "ddos_protection_plan_enable" {
-  description = "true/false DDoS Protection Plan on Virtual Network"
-  type        = bool
-  default     = false
-}
-
 variable "vnet_resource_tags" {
   description = "Optional tags for VNET"
   type        = map
   default     = {}
 
 }
-
-
-variable "create_ddos_plan" {
-  description = "Option to create a ddos plan for the VNET"
-  type        = bool
-  default     = false
-}
-
-variable "ddos_resource_group_location" {
-  description = "The resource group location for ddos_protection"
-  type        = string
-  default     = "North Europe"
-}
-variable "ddos_resource_group_name" {
-  description = "Name of resourcce group of ddos_protection"
-  type        = string
-  default     = ""
-}
-
-variable "ddos_protection_name" {
-  description = "Name of ddos_protection for VNET"
-  type        = string
-  default     = "myVNETProtection"
-}
-
-variable "subnets" {
-  default = [
-    {
-      name           = "a"
-      address_prefix = "10.0.1.0/24"
-      security_group = ""
-    },
-    {
-      name           = "b"
-      address_prefix = "10.0.2.0/24"
-      security_group = ""
-    },
-    {
-      name           = "c"
-      address_prefix = "10.0.3.0/24"
-      security_group = ""
-    },
-  ]
-}
-
-
-/* variable "subnets" {
-  default = []
-} */
