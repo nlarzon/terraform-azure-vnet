@@ -17,12 +17,10 @@ variable "resource_group_location" {
 }
 
 variable "resource_group_tags" {
-  description = "Additional tags for resource group"
-  type        = map
+  description = "Additional(optional) tags for resource group"
+  type        = map(string)
   default     = {}
 }
-
-
 
 variable "vnet_cidr" {
   description = "The CIDR block for VNET"
@@ -34,7 +32,6 @@ variable "vnet_name" {
   description = "Name of the VNET"
   type        = string
   default     = "myVNET"
-
 }
 
 variable "vnet_dns_servers" {
@@ -44,8 +41,26 @@ variable "vnet_dns_servers" {
 }
 
 variable "vnet_resource_tags" {
-  description = "Optional tags for VNET"
-  type        = map
+  description = "Additional(optional) tags for VNET"
+  type        = map(string)
+  default     = {}
+}
+
+variable "ddos_plan_name" {
+  description = "Name of the ddos plan"
+  type        = string
+  default     = "myDDOSplan"
+}
+
+variable "create_ddos_plan" {
+  description = "Option to create an ddos plan"
+  type        = bool
+  default     = false
+}
+
+variable "ddos_resource_tags" {
+  description = "Additional(optional) tags for ddos plan"
+  type        = map(string)
   default     = {}
 
 }
