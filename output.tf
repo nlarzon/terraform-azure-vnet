@@ -12,3 +12,8 @@ output "ddos_protection_plan" {
   description = "Ddos protection plan"
   value       = azurerm_network_ddos_protection_plan.ddos
 }
+
+output "subnets" {
+  description = "Created subnet resources"
+  value       = azurerm_subnet.subnet
+}

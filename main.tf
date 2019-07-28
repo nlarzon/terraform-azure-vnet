@@ -1,5 +1,6 @@
 locals {
-  if_ddos_enabled = var.create_ddos_plan ? [{}] : []
+  if_ddos_enabled      = var.create_ddos_plan ? [{}] : []
+  if_subnet_delegation = length(var.subnets)
 }
 
 
@@ -26,7 +27,6 @@ resource "azurerm_virtual_network" "vnet" {
       enable = true
     }
   }
-
   tags = merge({ "Name" = format("%s", var.vnet_name) }, var.vnet_resource_tags)
 }
 
@@ -37,4 +37,12 @@ resource "azurerm_network_ddos_protection_plan" "ddos" {
   resource_group_name = azurerm_resource_group.rg[0].name
 
   tags = merge({ "Name" = format("%s", var.vnet_name) }, var.ddos_resource_tags)
+}
+
+resource "azurerm_subnet" "subnet" {
+  count                = length(var.subnets)
+  name                 = var.subnets[count.index].name
+  resource_group_name  = var.create_resource_group ? azurerm_resource_group.rg[0].name : var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefix       = var.subnets[count.index].cidr
 }
