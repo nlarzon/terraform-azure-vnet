@@ -69,9 +69,3 @@ variable "subnets" {
   type        = list
   default     = []
 }
-
-variable "subnets" {
-  description = "Object list of subnet configuration. The resource group will use the same as the VNET. Example [{name: subnet-1, cidr: \"10.0.1.1/24\"}]"
-  type        = list
-  default     = []
-}
