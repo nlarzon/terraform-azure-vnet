@@ -2,12 +2,14 @@
 
 [![CircleCI](https://circleci.com/gh/nlarzon/terraform-azure-vnet.svg?style=svg)](https://circleci.com/gh/nlarzon/terraform-azure-vnet)
 [![Terraform Module Registry](https://img.shields.io/badge/Terraform%20Module%20Registry-0.9.1-green.svg)](https://registry.terraform.io/modules/nlarzon/vnet/azure/0.9.1)
-![Terraform Version](https://img.shields.io/badge/Terraform-0.12.x-green.svg)
+![Terraform Version](https://img.shields.io/badge/Terraform-0.12.6-green.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Terraform Module to create Azure VNET and subnets using terraform 0.12
 
 ## Subnets
+
+Subnet creation is using for_each in resources new in terraform 0.12.6
 
 When creating subnets there is no way to "attach" them to a security group using this module. It is a conscious choice because of the deprication of that field.
 
@@ -30,7 +32,7 @@ In addition terraform is unable to destroy the ddos protection plan so it has to
 | resource\_group\_location | Location for resource group See. https://azure.microsoft.com/en-us/global-infrastructure/locations/ | string | `"North Europe"` | no |
 | resource\_group\_name | The name of the resource group to use for the VNET, it is used in both cases even if the resource group is created | string | `"myRG"` | no |
 | resource\_group\_tags | Additional(optional) tags for resource group | map(string) | `{}` | no |
-| subnets | Object list of subnet configuration. The resource group will use the same as the VNET. Example [{name: subnet-1, cidr: "10.0.1.1/24"}] | list | `[]` | no |
+| subnets | Map of subnet objects. name, cidr, and service_endpoints supported | object | `{}` | no |
 | vnet\_cidr | The CIDR block for VNET | list | `[ "10.0.0.0/16" ]` | no |
 | vnet\_dns\_servers | Optional dns servers to use for VNET | list | `[]` | no |
 | vnet\_name | Name of the VNET | string | `"myVNET"` | no |

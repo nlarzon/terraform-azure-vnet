@@ -65,7 +65,11 @@ variable "ddos_resource_tags" {
 }
 
 variable "subnets" {
-  description = "Object list of subnet configuration. The resource group will use the same as the VNET. Example [{name: subnet-1, cidr: \"10.0.1.1/24\"}]"
-  type        = list
-  default     = []
+  description = "Map of subnet objects. name, cidr, and service_endpoints supported"
+  type = map(object({
+    name              = string
+    cidr              = string
+    service_endpoints = list(string)
+  }))
+  default = {}
 }

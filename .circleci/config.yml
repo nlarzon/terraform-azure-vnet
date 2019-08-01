@@ -10,7 +10,7 @@ jobs:
           command: tflint
   validate:
     docker:
-      - image: hashicorp/terraform:0.12.5
+      - image: hashicorp/terraform:0.12.6
     steps:
       - checkout
       - run:
