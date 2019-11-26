@@ -5,7 +5,7 @@ output "vnet" {
 
 output "resource_group" {
   description = "Resource group for VNET"
-  value       = azurerm_resource_group.rg[0]
+  value       = azurerm_resource_group.rg
   depends_on = [
     azurerm_resource_group.rg,
   ]
@@ -13,7 +13,7 @@ output "resource_group" {
 
 output "ddos_protection_plan" {
   description = "Ddos protection plan"
-  value       = azurerm_network_ddos_protection_plan.ddos[0]
+  value       = azurerm_network_ddos_protection_plan.ddos
   depends_on = [
     azurerm_network_ddos_protection_plan.ddos,
   ]
